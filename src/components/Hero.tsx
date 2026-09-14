@@ -13,7 +13,7 @@ export const Hero: React.FC<HeroProps> = ({
   onScrollDown,
 }) => {
   return (
-    <section className="relative min-h-screen w-full flex items-end justify-start overflow-hidden pt-24 pb-16 sm:pb-24">
+    <section className="relative w-full flex items-end justify-start overflow-hidden py-10 md:py-30">
       {/* Immersive Photography Layer */}
       <div className="absolute inset-0 z-0">
         <img
@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({
       </div>
 
       {/* Hero Architectural Content Container */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-3 sm:px-10 lg:px-16">
         <div className="max-w-3xl mx-auto text-center">
           {/* Eyebrow */}
           <div className="flex items-center justify-center gap-3 mb-4">
@@ -47,7 +47,7 @@ export const Hero: React.FC<HeroProps> = ({
           </h1>
 
           {/* Editorial Subtext */}
-          <p className="text-white/80 text-base sm:text-lg max-w-xl mx-auto font-light leading-relaxed mb-10 tracking-normal">
+          <p className="text-white/80 text-base sm:text-lg max-w-xl mx-auto font-light leading-relaxed mb-4 md:mb-10 tracking-normal">
             Masterfully synthesized exterior architecture, bespoke horticultural
             curation, and timeless elemental living.
           </p>
@@ -68,27 +68,6 @@ export const Hero: React.FC<HeroProps> = ({
               View Monograph
             </button>
           </div>
-        </div>
-
-        {/* Bottom Metadata & Scroll Indicator */}
-        <div className="mt-16 sm:mt-24 pt-6 border-t border-white/20 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-6 text-[10px] uppercase tracking-[0.22em] text-white/70 font-mono">
-            <span>34° 03&apos; N, 118° 30&apos; W</span>
-            <span className="hidden md:inline">•</span>
-            <span className="hidden md:inline">Elevation 420M</span>
-            <span>•</span>
-            <span>Private Estate Archive</span>
-          </div>
-
-          <button
-            onClick={onScrollDown}
-            className="group flex items-center gap-2 text-[10px] uppercase tracking-[0.28em] text-white/80 hover:text-white transition-colors cursor-pointer"
-          >
-            <span>Scroll to Explore</span>
-            <span className="material-symbols-outlined text-sm group-hover:translate-y-1 transition-transform">
-              arrow_downward
-            </span>
-          </button>
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ProjectFolio } from "../types";
 import { PORTFOLIO_PROJECTS, BLUEPRINT_DESK_IMAGE_URL } from "../data/content";
 
@@ -11,204 +11,400 @@ export const ServicesView: React.FC<ServicesViewProps> = ({
   onSelectProject,
   onOpenConsultation,
 }) => {
-  const disciplines = [
+  const [activeHubIndex, setActiveHubIndex] = useState<number>(0);
+  const [expandedSpecialistId, setExpandedSpecialistId] = useState<string | null>(null);
+
+  // 5 Service Hubs > 24 Specialist Disciplines (as specified in Sitemap)
+  const serviceHubs = [
     {
+      id: "hub-01",
       num: "01",
-      title: "Estate Master Planning & Spatial Cartography",
-      desc: "Holistic masterplans balancing residential massing against geological gradients, microclimate wind corridors, and solar trajectories.",
-      deliverables: [
-        "Topographical 3D LiDAR Survey & Bedrock Borehole Mapping",
-        "Zoning & Environmental Coastal Permitting Dossiers",
-        "Axial Sightline Sight-Cone Alignments",
-        "Circulation & Subterranean Service Routing",
+      title: "Master Landscape Planning & Spatial Cartography",
+      tagline: "Macro site planning, contour analysis, and ecological zoning",
+      image:
+        "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80",
+      description:
+        "Holistic estate cartography balancing architectural living axes against geological gradients, microclimate wind corridors, and solar trajectories.",
+      specialists: [
+        {
+          id: "sp-01",
+          name: "3D LiDAR Point-Cloud Topography",
+          scope: "Millimeter-accuracy terrain scans capturing bedrock thresholds and contour gradients.",
+        },
+        {
+          id: "sp-02",
+          name: "Solar Radiation & Microclimate Heat Mapping",
+          scope: "Equinox solar path simulations to optimize shade pavilions and thermal stone absorption.",
+        },
+        {
+          id: "sp-03",
+          name: "Coastal Commission & Environmental Zoning",
+          scope: "Comprehensive regulatory filing for protected coastal dunes, hillsides, and wetland setbacks.",
+        },
+        {
+          id: "sp-04",
+          name: "Primary Architectural Sightline Alignments",
+          scope: "Axial cone calculations ensuring living room and master suite vistas flow uninterrupted.",
+        },
+        {
+          id: "sp-05",
+          name: "Subterranean Utility & Drainage Routing",
+          scope: "Concealed high-capacity stormwater vaults and invisible service access routing.",
+        },
       ],
-      associatedProject: PORTFOLIO_PROJECTS[0],
     },
     {
+      id: "hub-02",
       num: "02",
-      title: "Architectural Hardscape & Monolithic Masonry",
-      desc: "Precision stonework, dry-stacked volcanic retaining walls, and custom-honed Roman travertine plinths calibrated with concealed drainage.",
-      deliverables: [
-        "Zero-Grout Monolithic Stone Joinery Details",
-        "Engineered Seismic Tiebacks for Cantilevered Terraces",
-        "Hand-Rubbed Architectural Gunmetal Bronze Expansion Joints",
-        "Slip-Resistant Flamed and Honed Surface Finishes",
+      title: "Architectural Watercraft & Swimming Basins",
+      tagline: "Perimeter knife-edge pools, koi sanctuaries, and acoustic weirs",
+      image:
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80",
+      description:
+        "Engineered water features that dissolve the line between pool water and open sky, complete with subterranean acoustic water vaults and dual-saline filtration.",
+      specialists: [
+        {
+          id: "sp-06",
+          name: "Knife-Edge Infinity Perimeter Weirs",
+          scope: "Slot overflow engineering with mirror-flat water surfaces flush with stone pavers.",
+        },
+        {
+          id: "sp-07",
+          name: "Subterranean Acoustic Attenuation Vaults",
+          scope: "Sound-isolated mechanical rooms preventing pump vibration from entering residential foundations.",
+        },
+        {
+          id: "sp-08",
+          name: "Biophilic Koi & Wetland Filtration Circuits",
+          scope: "Sub-gravel biological nitrifying filters cycling 15,000 gal/hr for crystalline water clarity.",
+        },
+        {
+          id: "sp-09",
+          name: "Ozone & Low-Saline Mineral Sanitization",
+          scope: "Gentle mineral water conditioning eliminating harsh chlorine odors and eye irritation.",
+        },
+        {
+          id: "sp-10",
+          name: "Geothermal & Solar Pool Heat Exchange",
+          scope: "Year-round energy-efficient thermal management integrated with estate heat pumps.",
+        },
       ],
-      associatedProject: PORTFOLIO_PROJECTS[1],
     },
     {
+      id: "hub-03",
       num: "03",
-      title: "Specimen Arboreal Sourcing & Botanical Curation",
-      desc: "Ethical acquisition and transcontinental relocation of century-old olive trees, Japanese black pines, and resilient native Mediterranean flora.",
-      deliverables: [
-        "Global Arboreal Heritage Registry & Provenance Tracking",
-        "Mycorrhizal Inoculation & Root Zone Aeration Engineering",
-        "Microclimate Companion Layering Schedules",
-        "Seasonal Deciduous Chromatic Mapping",
+      title: "Structural Hardscape & Monolithic Stonework",
+      tagline: "Travertine plinths, volcanic dry-stack walls, and cantilevered pavilions",
+      image:
+        "https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?auto=format&fit=crop&w=1200&q=80",
+      description:
+        "Precision stonework chiseled from certified Italian and Sardinian quarry faces, assembled with zero-grout joinery and seismic tiebacks.",
+      specialists: [
+        {
+          id: "sp-11",
+          name: "Monolithic Dry-Joint Basalt Masonry",
+          scope: "Zero-mortar interlocking retaining walls with concealed stainless steel internal dowels.",
+        },
+        {
+          id: "sp-12",
+          name: "Cross-Cut Roman Travertine Paving Plinths",
+          scope: "Custom-honed large format slabs with slip-resistant acid-etched and flamed finishes.",
+        },
+        {
+          id: "sp-13",
+          name: "Post-Tensioned Cantilevered Terraces",
+          scope: "Engineered concrete deck structures floating gracefully over steep hillside ridges.",
+        },
+        {
+          id: "sp-14",
+          name: "Flush Sunken Fire Amphitheaters",
+          scope: "Terrace-integrated lounge wells with marine-grade bronze burners and concealed drainage.",
+        },
+        {
+          id: "sp-15",
+          name: "Architectural Bronze & Gunmetal Detailing",
+          scope: "Hand-patinated bronze stair nosings, perimeter trim, and bespoke garden gates.",
+        },
       ],
-      associatedProject: PORTFOLIO_PROJECTS[1],
     },
     {
+      id: "hub-04",
       num: "04",
-      title: "Knife-Edge Pools & Reflection Basins",
-      desc: "Seamless zero-edge perimeter weirs that dissolve the division between pool water and natural horizons, complete with acoustic attenuation.",
-      deliverables: [
-        "Hydraulic Surge Basin Sizing & Perimeter Spillway Slots",
-        "Natural Saline & Ozone Water Purification Circuits",
-        "Concealed Sub-Gravel Koi Biological Filtration",
-        "Subterranean Mechanical Vault Layouts",
+      title: "Horticultural Architecture & Arboreal Curation",
+      tagline: "Century-old olive groves, Japanese black pines, and native flora matrices",
+      image:
+        "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=80",
+      description:
+        "Ethical sourcing, transcontinental logistics, and heavy-crane rigging of mature specimen trees with 99.4% transplant survival protocols.",
+      specialists: [
+        {
+          id: "sp-16",
+          name: "Historic Specimen Olive Tree Acquisition",
+          scope: "Rescued 100+ year old productive olive trees certified with full phytosanitary passports.",
+        },
+        {
+          id: "sp-17",
+          name: "Niwaki Japanese Black Pine Sculpting",
+          scope: "Hand-pruned coastal pines sculpted to frame dramatic architectural evening silhouettes.",
+        },
+        {
+          id: "sp-18",
+          name: "Microclimate Native Flora Matrices",
+          scope: "Biodiverse perennial and drought-tolerant Mediterranean palettes with continuous blooms.",
+        },
+        {
+          id: "sp-19",
+          name: "Mycorrhizal Inoculation & Root Aeration",
+          scope: "Biological soil conditioning ensuring immediate root establishment in foreign soils.",
+        },
+        {
+          id: "sp-20",
+          name: "Sub-Canopy Living Moss & Groundcover",
+          scope: "Velvety shade-loving bryophyte gardens thriving beneath mature canopy shade.",
+        },
       ],
-      associatedProject: PORTFOLIO_PROJECTS[2],
     },
     {
+      id: "hub-05",
       num: "05",
-      title: "Concealed Luminary Choreography",
-      desc: "Nightscape illumination engineered with 2700K optical glare shields recessed directly into stone risers, tree forks, and water margins.",
-      deliverables: [
-        "Dark-Sky Compliant Glare-Free Optical Fixtures",
-        "Astronomical Clock & Dynamic Twilight Automation",
-        "Silhouette Highlighting of Sculptural Trunks",
-        "Low-Voltage Solid Brass Recessed Fixture Schedules",
+      title: "Sustainable Estate Ecology & Living Stewardship",
+      tagline: "Museum-grade nightscapes, smart hydrology, and perpetual estate care",
+      image:
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=80",
+      description:
+        "Long-term ecological preservation systems ensuring estate landscapes flourish for decades under dedicated master gardener oversight.",
+      specialists: [
+        {
+          id: "sp-21",
+          name: "2700K Museum-Grade Twilight Nightscapes",
+          scope: "Dark-sky certified recessed solid brass optics casting soft organic illumination without glare.",
+        },
+        {
+          id: "sp-22",
+          name: "Closed-Loop Stormwater Recycling",
+          scope: "Subsurface cisterns and bio-swales capturing 100% of rainwater runoff for estate irrigation.",
+        },
+        {
+          id: "sp-23",
+          name: "Quarterly Soil Diagnostic Biomarker Testing",
+          scope: "Laboratory microbiome profiling to balance mineral nutrients and prevent tree pathogens.",
+        },
+        {
+          id: "sp-24",
+          name: "Perpetual Master Gardener Stewardship",
+          scope: "Direct seasonal pruning protocols and system maintenance executed by senior staff.",
+        },
       ],
-      associatedProject: PORTFOLIO_PROJECTS[2],
-    },
-    {
-      num: "06",
-      title: "Outdoor Pavilions & Hearth Amphitheaters",
-      desc: "Post-tensioned cantilevered concrete roofs, open-air culinary suites, and sunken conversation fire pits flush with terrace paving.",
-      deliverables: [
-        "Engineered Structural Concrete Overhangs",
-        "Integrated Marine-Grade Induction & Wood Hearth Details",
-        "Custom Cast Bronze Gas Fire Discs & Bioethanol Burners",
-        "Acoustic Perimeter Baffling for Intimate Speech",
-      ],
-      associatedProject: PORTFOLIO_PROJECTS[3],
     },
   ];
+
+  const currentHub = serviceHubs[activeHubIndex];
 
   return (
     <div className="w-full bg-[#f9f9f8] pt-28 pb-32">
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
         {/* Header */}
-        <div className="max-w-3xl mb-20">
+        <div className="max-w-3xl mb-16">
           <div className="flex items-center gap-3 mb-4">
             <span className="w-6 h-[1px] bg-[#1a1a1a]" />
             <span className="text-[11px] uppercase font-bold tracking-[0.24em] text-[#8c857b]">
-              Comprehensive Practice
+              Full Practice Hierarchy (/services/)
             </span>
           </div>
           <h1 className="font-serif text-4xl sm:text-6xl text-[#1a1c1c] font-normal tracking-tight mb-6">
-            Architectural Disciplines &amp; Field Engineering
+            5 Service Hubs &gt; 24 Specialist Disciplines
           </h1>
           <p className="text-[#444748] text-base sm:text-lg font-light leading-relaxed">
-            From raw bedrock mapping to the final millimeter alignment of honed
-            travertine, our disciplines operate in strict concert with your
-            architect of record.
+            Explore our comprehensive architectural landscape capabilities.
+            Select a service hub below to open the complete breakdown of our 24 specialized practices.
           </p>
         </div>
 
-        {/* Studio Drawing Desk Banner */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-24 items-center bg-[#f2f1ee] border border-[#e3e1dc] p-8 sm:p-12">
-          <div className="lg:col-span-7 aspect-[16/10] overflow-hidden bg-black border border-[#e3e1dc]">
+        {/* 5 Service Hubs Selection Tabs */}
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-3 mb-12">
+          {serviceHubs.map((hub, idx) => (
+            <button
+              key={hub.id}
+              onClick={() => {
+                setActiveHubIndex(idx);
+                setExpandedSpecialistId(null);
+              }}
+              className={`p-5 text-left border transition-all cursor-pointer flex flex-col justify-between ${
+                activeHubIndex === idx
+                  ? "border-[#1a1a1a] bg-[#1a231c] text-white shadow-md"
+                  : "border-[#e3e1dc] bg-[#f2f1ee] text-[#1a1c1c] hover:border-[#8c857b]"
+              }`}
+            >
+              <div className="font-mono text-xs mb-3 text-[#8c857b]">
+                HUB {hub.num}
+              </div>
+              <div className="font-serif text-base sm:text-lg leading-snug">
+                {hub.title}
+              </div>
+            </button>
+          ))}
+        </div>
+
+        {/* Active Hub Showcase */}
+        <div className="bg-[#f2f1ee] border border-[#e3e1dc] p-8 sm:p-14 mb-20 grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-6 aspect-[16/10] overflow-hidden bg-black border border-[#e3e1dc]">
             <img
-              src={BLUEPRINT_DESK_IMAGE_URL}
-              alt="Architectural Drafting Table and Stone Materials"
+              src={currentHub.image}
+              alt={currentHub.title}
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="lg:col-span-5 flex flex-col justify-center">
-            <span className="text-[10px] uppercase font-mono tracking-widest text-[#8c857b] mb-2">
-              Atelier Methodology
-            </span>
-            <h3 className="font-serif text-2xl sm:text-3xl text-[#1a1c1c] mb-4">
-              Integrated Architectural Alignment
-            </h3>
+
+          <div className="lg:col-span-6 flex flex-col justify-center">
+            <div className="text-[10px] uppercase font-mono tracking-widest text-[#8c857b] mb-2">
+              Service Hub {currentHub.num} • {currentHub.specialists.length} Specialized Areas
+            </div>
+            <h2 className="font-serif text-3xl sm:text-4xl text-[#1a1c1c] mb-3">
+              {currentHub.title}
+            </h2>
+            <div className="text-xs uppercase tracking-editorial text-[#5a5d4d] font-semibold mb-4">
+              {currentHub.tagline}
+            </div>
             <p className="text-xs sm:text-sm text-[#444748] font-light leading-relaxed mb-6">
-              We do not treat landscape as an afterthought. Our principals
-              collaborate with master architects from schematic inception,
-              ensuring floor levels, glass thresholds, and sightlines flow
-              outward uninterrupted.
+              {currentHub.description}
             </p>
+
             <button
               onClick={onOpenConsultation}
               className="self-start bg-[#1a1a1a] text-white px-6 py-3 text-xs uppercase tracking-architectural font-semibold hover:bg-[#5a5d4d] transition-colors cursor-pointer"
             >
-              Consult On An Estate Masterplan
+              Inquire on Hub {currentHub.num} Scope
             </button>
           </div>
         </div>
 
-        {/* Disciplines Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
-          {disciplines.map((item) => (
-            <div
-              key={item.num}
-              className="bg-[#f2f1ee] border border-[#e3e1dc] p-8 flex flex-col justify-between hover:border-[#1a1a1a] transition-all group"
-            >
-              <div>
-                <div className="flex items-center justify-between text-[11px] font-mono text-[#8c857b] mb-4">
-                  <span>DISCIPLINE {item.num}</span>
-                  <span className="material-symbols-outlined text-sm">
-                    architecture
-                  </span>
-                </div>
+        {/* Specialist Disciplines under this Hub */}
+        <div className="mb-24">
+          <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#e3e1dc]">
+            <h3 className="font-serif text-2xl text-[#1a1c1c]">
+              Specialist Disciplines under Hub {currentHub.num}
+            </h3>
+            <span className="text-xs font-mono text-[#8c857b]">
+              {currentHub.specialists.length} Practice Disciplines
+            </span>
+          </div>
 
-                <h3 className="font-serif text-xl text-[#1a1c1c] font-normal mb-4 group-hover:text-[#5a5d4d] transition-colors">
-                  {item.title}
-                </h3>
-
-                <p className="text-xs text-[#444748] font-light leading-relaxed mb-6">
-                  {item.desc}
-                </p>
-
-                <div className="space-y-2 mb-8 pt-4 border-t border-[#e3e1dc]">
-                  <div className="text-[9px] uppercase font-mono tracking-widest text-[#8c857b]">
-                    Primary Deliverables:
-                  </div>
-                  {item.deliverables.map((del, dIdx) => (
-                    <div
-                      key={dIdx}
-                      className="flex items-start gap-2 text-[11px] text-[#1a1c1c]"
-                    >
-                      <span className="w-1 h-1 bg-[#5a5d4d] mt-1.5 shrink-0" />
-                      <span>{del}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {item.associatedProject && (
-                <button
-                  onClick={() => onSelectProject(item.associatedProject)}
-                  className="pt-4 border-t border-[#e3e1dc] flex items-center justify-between text-[11px] uppercase tracking-editorial font-bold text-[#1a1a1a] hover:text-[#5a5d4d] transition-colors cursor-pointer"
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {currentHub.specialists.map((sp, sIdx) => {
+              const isExpanded = expandedSpecialistId === sp.id;
+              return (
+                <div
+                  key={sp.id}
+                  onClick={() =>
+                    setExpandedSpecialistId(isExpanded ? null : sp.id)
+                  }
+                  className={`p-6 border flex flex-col justify-between transition-all cursor-pointer ${
+                    isExpanded
+                      ? "border-[#1a1a1a] bg-white shadow-sm"
+                      : "border-[#e3e1dc] bg-[#f9f9f8] hover:border-[#8c857b]"
+                  }`}
                 >
-                  <span>Exemplar: {item.associatedProject.title}</span>
-                  <span className="material-symbols-outlined text-sm">
-                    north_east
-                  </span>
-                </button>
-              )}
-            </div>
-          ))}
+                  <div>
+                    <div className="flex items-center justify-between text-[10px] font-mono text-[#8c857b] mb-3">
+                      <span>SPECIALIST 0{sIdx + 1}</span>
+                      <span className="material-symbols-outlined text-sm text-[#5a5d4d]">
+                        {isExpanded ? "unfold_less" : "unfold_more"}
+                      </span>
+                    </div>
+                    <h4 className="font-serif text-lg text-[#1a1c1c] mb-2 font-normal">
+                      {sp.name}
+                    </h4>
+                    <p className="text-xs text-[#444748] font-light leading-relaxed mb-4">
+                      {sp.scope}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-[#e3e1dc] text-[10px] uppercase font-bold tracking-editorial text-[#1a1a1a] flex items-center justify-between">
+                    <span>Explore Technical Scope</span>
+                    <span className="material-symbols-outlined text-sm">
+                      arrow_forward
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Commission Banner */}
-        <div className="p-12 bg-[#1a1a1a] text-white flex flex-col md:flex-row items-center justify-between gap-8">
+        {/* Complete 24-Specialist Practice Hierarchy Overview Tree */}
+        <div className="border-t border-[#e3e1dc] pt-20 mb-20">
+          <div className="max-w-3xl mb-12">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="w-6 h-[1px] bg-[#1a1a1a]" />
+              <span className="text-[11px] uppercase font-bold tracking-[0.24em] text-[#8c857b]">
+                Master Practice Architecture
+              </span>
+            </div>
+            <h2 className="font-serif text-3xl sm:text-5xl text-[#1a1c1c] font-normal tracking-tight">
+              The 24 Specialist Hierarchy Directory
+            </h2>
+            <p className="text-[#444748] text-sm sm:text-base font-light leading-relaxed mt-3">
+              Every discipline is executed in-house with dedicated master stonemasons,
+              arborists, and licensed landscape architects.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {serviceHubs.map((hub) => (
+              <div
+                key={hub.id}
+                className="bg-[#f2f1ee] border border-[#e3e1dc] p-6 flex flex-col justify-between"
+              >
+                <div>
+                  <div className="text-[10px] uppercase font-mono tracking-widest text-[#8c857b] mb-1">
+                    Hub {hub.num}
+                  </div>
+                  <h3 className="font-serif text-lg text-[#1a1c1c] mb-4">
+                    {hub.title}
+                  </h3>
+
+                  <ul className="space-y-2 text-xs text-[#444748] font-light">
+                    {hub.specialists.map((s, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 bg-[#5a5d4d] mt-1.5 shrink-0" />
+                        <span>{s.name}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <button
+                  onClick={() => {
+                    setActiveHubIndex(
+                      serviceHubs.findIndex((h) => h.id === hub.id)
+                    );
+                    window.scrollTo({ top: 300, behavior: "smooth" });
+                  }}
+                  className="mt-6 pt-4 border-t border-[#e3e1dc] text-[10px] uppercase tracking-editorial font-bold text-[#1a1a1a] hover:text-[#5a5d4d] text-left cursor-pointer"
+                >
+                  Inspect Hub {hub.num} →
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Call To Action Banner */}
+        <div className="p-12 bg-[#1a231c] text-white flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <div className="text-[10px] uppercase font-mono tracking-widest text-white/50 mb-2">
+            <div className="text-[10px] uppercase font-mono tracking-widest text-white/60 mb-2">
               Bespoke Practice
             </div>
             <h3 className="font-serif text-3xl text-white">
               Ready to Commission an Exterior Masterplan?
             </h3>
-            <p className="text-sm text-white/70 font-light mt-1">
-              Currently scheduling pre-design site inspections for upcoming
-              estate intakes.
+            <p className="text-sm text-white/75 font-light mt-1">
+              Our multidisciplinary directors are available for site inspections worldwide.
             </p>
           </div>
           <button
             onClick={onOpenConsultation}
-            className="shrink-0 bg-white text-[#1a1a1a] hover:bg-[#e3e1dc] px-8 py-4 text-xs font-semibold tracking-architectural uppercase transition-colors cursor-pointer"
+            className="shrink-0 bg-white text-[#1a1c1c] hover:bg-[#e3e1dc] px-8 py-4 text-xs font-semibold tracking-architectural uppercase transition-colors cursor-pointer"
           >
             Request Private Consultation
           </button>

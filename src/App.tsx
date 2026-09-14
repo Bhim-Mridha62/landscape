@@ -2,12 +2,9 @@ import { useState, useEffect } from "react";
 import { NavSection, ProjectFolio } from "./types";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { PressBar } from "./components/PressBar";
-import { Methodology } from "./components/Methodology";
+import { HowWeWork } from "./components/HowWeWork";
 import { PortfolioShowcase } from "./components/PortfolioShowcase";
-import { MaterialitySection } from "./components/MaterialitySection";
-import { StudioSection } from "./components/StudioSection";
-import { StatsBanner } from "./components/StatsBanner";
+import { MeetHSS7 } from "./components/MeetHSS7";
 import { TestimonialCarousel } from "./components/TestimonialCarousel";
 import { InquirySection } from "./components/InquirySection";
 import { Footer } from "./components/Footer";
@@ -17,9 +14,11 @@ import { MonographModal } from "./components/MonographModal";
 import { ClientVaultModal } from "./components/ClientVaultModal";
 import { ServicesView } from "./components/ServicesView";
 import { PortfolioView } from "./components/PortfolioView";
-import { CraftView } from "./components/CraftView";
-import { StudioView } from "./components/StudioView";
-import BeforeAfterSlider from "./components/BeforeAfterSlider";
+import { ProcessView } from "./components/ProcessView";
+import { AboutView } from "./components/AboutView";
+import { ServicesPreview } from "./components/ServicesPreview";
+import { JournalHighlights } from "./components/JournalHighlights";
+import { JournalView } from "./components/JournalView";
 
 export default function App() {
   const [currentSection, setCurrentSection] = useState<NavSection>("home");
@@ -39,9 +38,9 @@ export default function App() {
   };
 
   const handleScrollToExplore = () => {
-    const methodologyEl = document.getElementById("methodology");
-    if (methodologyEl) {
-      methodologyEl.scrollIntoView({ behavior: "smooth" });
+    const portfolioEl = document.getElementById("portfolio-showcase");
+    if (portfolioEl) {
+      portfolioEl.scrollIntoView({ behavior: "smooth" });
     } else {
       window.scrollBy({ top: window.innerHeight * 0.8, behavior: "smooth" });
     }
@@ -74,52 +73,39 @@ export default function App() {
       <main className="flex-1 w-full">
         {currentSection === "home" && (
           <>
-            {/* Full Viewport Monographic Hero */}
+            {/* 01 — Full Viewport Monographic Hero */}
             <Hero
               onExplorePortfolio={() => handleNavigate("portfolio")}
               onViewMonograph={() => setIsMonographOpen(true)}
               onScrollDown={handleScrollToExplore}
             />
 
-            {/* Editorial Press Recognition Bar */}
-            <PressBar />
-
-            {/* The Methodology: 4 Architectural Phases */}
-            <Methodology />
-
-            {/* Selected Folios: The Glass Pavilion & Azure Horizon */}
+            {/* 02 — Featured Projects: Large Project Cards */}
             <PortfolioShowcase
               onSelectProject={(project) => setSelectedProject(project)}
               onViewAllWorks={() => handleNavigate("portfolio")}
             />
 
-            {/* Materiality & Craft: Basalt, Ancient Olive, Travertine & Bronze */}
-            <MaterialitySection
-              onOpenMaterialIndex={() => handleNavigate("craft")}
+            {/* 03 — Explore Our Services: 5 Visual Gateways */}
+            <ServicesPreview
+              onNavigateToServices={() => handleNavigate("services")}
             />
-            <div className="mx-2 lg:mx-20 my-5">
-              <BeforeAfterSlider
-                beforeImage="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80"
-                afterImage="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80"
-                beforeLabel="Before"
-                afterLabel="After"
-                initialPosition={50}
-                title={"From Outdated to Conversion-Optimized UI"}
-                description={
-                  "Slide to experience a complete website redesign—crafted with cleaner layouts, better typography, and an intuitive user experience."
-                }
-              />
-            </div>
-            {/* The Studio: Julian Vance & Elena Rostova */}
-            <StudioSection onOpenPhilosophy={() => handleNavigate("studio")} />
 
-            {/* Quantitative Impact Statistics */}
-            <StatsBanner />
+            {/* 04 — How We Work: 4 Architectural Stages with direct link to Our Process */}
+            <HowWeWork />
 
-            {/* Client Perspectives Testimonial Carousel */}
+            {/* 05 — Meet HSS7: Short Company Introduction & Team Imagery */}
+            <MeetHSS7 onNavigateToAbout={() => handleNavigate("about")} />
+
+            {/* 06 — Client Stories: Testimonial Carousel */}
             <TestimonialCarousel />
 
-            {/* Bespoke Commissions Callout */}
+            {/* 07 — Journal Highlights: Design Articles & Stories */}
+            <JournalHighlights
+              onNavigateToJournal={() => handleNavigate("journal")}
+            />
+
+            {/* 08 — Consultation CTA */}
             <InquirySection
               onOpenConsultation={() => {
                 setConsultationPreselection(undefined);
@@ -130,13 +116,6 @@ export default function App() {
           </>
         )}
 
-        {currentSection === "services" && (
-          <ServicesView
-            onSelectProject={(project) => setSelectedProject(project)}
-            onOpenConsultation={() => setIsConsultationOpen(true)}
-          />
-        )}
-
         {currentSection === "portfolio" && (
           <PortfolioView
             onSelectProject={(project) => setSelectedProject(project)}
@@ -144,15 +123,28 @@ export default function App() {
           />
         )}
 
-        {currentSection === "craft" && (
-          <CraftView onOpenConsultation={() => setIsConsultationOpen(true)} />
+        {currentSection === "services" && (
+          <ServicesView
+            onSelectProject={(project) => setSelectedProject(project)}
+            onOpenConsultation={() => setIsConsultationOpen(true)}
+          />
         )}
 
-        {(currentSection === "studio" || currentSection === "contact") && (
-          <StudioView
+        {(currentSection === "process" || currentSection === "craft") && (
+          <ProcessView onOpenConsultation={() => setIsConsultationOpen(true)} />
+        )}
+
+        {(currentSection === "about" ||
+          currentSection === "studio" ||
+          currentSection === "contact") && (
+          <AboutView
             onOpenConsultation={() => setIsConsultationOpen(true)}
             onOpenMonograph={() => setIsMonographOpen(true)}
           />
+        )}
+
+        {currentSection === "journal" && (
+          <JournalView onOpenConsultation={() => setIsConsultationOpen(true)} />
         )}
       </main>
 

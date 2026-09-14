@@ -105,7 +105,7 @@ export const METHODOLOGY_PHASES: MethodologyPhase[] = [
 export const PORTFOLIO_PROJECTS: ProjectFolio[] = [
   {
     id: 'the-glass-pavilion',
-    title: 'The Glass Pavilion',
+    title: 'Palm Jumeirah',
     subtitle: 'Kyoto & Pacific Palisades • Private Estate',
     location: 'Pacific Palisades, California',
     category: 'Zen & Mineral',
@@ -115,7 +115,7 @@ export const PORTFOLIO_PROJECTS: ProjectFolio[] = [
       'Integrating dual-cantilevered transparent living spaces over dry-stacked granite retaining walls, sculpted pine specimens, and subterranean filtered water flows.',
     extendedDescription:
       'Perched on an ocean-facing ridge in the Pacific Palisades, The Glass Pavilion resolves the tension between modernist transparency and timeless Japanese Zen garden discipline. The landscape dissolves the threshold of the home via monolithic granite steps descending into a gravel raked karesansui courtyard, anchored by specimen black pines hand-curated from private Japanese nurseries.',
-    heroImage: GLASS_PAVILION_IMAGE_URL,
+    heroImage: "/Palm Jumeirah.png",
     specs: {
       acreage: '2.8 Acres',
       elevationDelta: '42 ft terraced grade',
@@ -132,18 +132,18 @@ export const PORTFOLIO_PROJECTS: ProjectFolio[] = [
     ],
   },
   {
-    id: 'azure-horizon',
-    title: 'Azure Horizon',
-    subtitle: "Cap d'Antibes • Coastal Sanctuary",
-    location: "Cap d'Antibes, French Riviera",
-    category: 'Coastal Sanctuaries',
-    disciplines: 'Sculptural Olive Terraces & Infinity Ocean Basin',
-    year: '2024',
+    id: 'jumeirah-islands',
+    title: 'Jumeirah Islands',
+    subtitle: "Dubai • Private Island Residence",
+    location: "Dubai, United Arab Emirates",
+    category: 'Tropical Modern Oasis',
+    disciplines: 'Waterfront Hardscape & Exotic Specimen Gardens',
+    year: '2023',
     description:
       'Cascading honed Roman travertine decks that frame panoramic Mediterranean horizons, accented with hand-selected specimen olive trees and endemic lavender flora.',
     extendedDescription:
       'Carved into the limestone promontory of Cap d’Antibes, Azure Horizon unfolds as a sequence of outdoor salons stepping gently down to the sea. A 35-meter knife-edge infinity basin reflects the azure maritime skies, while three 180-year-old Olea europaea trees stand sentinel over sun-bleached travertine terraces.',
-    heroImage: AZURE_HORIZON_IMAGE_URL,
+    heroImage: "/jumeirah-islands.webp",
     specs: {
       acreage: '6.4 Hectares',
       elevationDelta: '78 ft maritime bluff',
@@ -161,7 +161,7 @@ export const PORTFOLIO_PROJECTS: ProjectFolio[] = [
   },
   {
     id: 'obsidian-reflection-villa',
-    title: 'Obsidian Reflection Villa',
+    title: 'Al Khawannej',
     subtitle: 'Bel Air Ridge • Architectural Masterplan',
     location: 'Bel Air, California',
     category: 'Hillside & Cantilever',
@@ -171,7 +171,7 @@ export const PORTFOLIO_PROJECTS: ProjectFolio[] = [
       'Black slate monolithic walls paired with an obsidian reflecting pool and illuminated olive canopy create a dramatic nighttime sanctuary.',
     extendedDescription:
       'Commanding 180-degree views of the Los Angeles basin, this project explores the dark tactile palette of split-face charcoal basalt and night water. The lap pool acts as a black mirror, doubling the warm interior illumination of the residence.',
-    heroImage: TWILIGHT_VILLA_IMAGE_URL,
+    heroImage: "/Al Khawannej.webp",
     specs: {
       acreage: '3.5 Acres',
       elevationDelta: '35 ft canyon slope',
@@ -188,7 +188,7 @@ export const PORTFOLIO_PROJECTS: ProjectFolio[] = [
   },
   {
     id: 'cliffside-culinary-pavilion',
-    title: 'Promontory Culinary Pavilion',
+    title: 'Khawaneej 1',
     subtitle: 'Corona del Mar • Oceanfront Atelier',
     location: 'Corona del Mar, California',
     category: 'Coastal Sanctuaries',
@@ -198,7 +198,34 @@ export const PORTFOLIO_PROJECTS: ProjectFolio[] = [
       'A wafer-thin cantilevered concrete roof floats over an outdoor kitchen, sculpted travertine dining table, and ocean-facing fire hearth.',
     extendedDescription:
       'Conceived as a sheltered perch for open-air entertaining above the Pacific breakers, the pavilion utilizes post-tensioned ultra-high-performance concrete to achieve a seamless 24-foot cantilever with zero visual support on the seaward edge.',
-    heroImage: OUTDOOR_KITCHEN_IMAGE_URL,
+    heroImage: "/Khawaneej 1.webp",
+    specs: {
+      acreage: '1.9 Acres',
+      elevationDelta: '110 ft sea cliff',
+      stoneClass: 'Monolithic Travertine & Ribbed Bronze Panels',
+      waterFeature: 'Cascading Water Wall into Coastal Cistern',
+      arborealHighlights: 'Wind-sculpted Cypress & Coastal Agave Curations',
+      completion: 'Winter 2024',
+    },
+    architecturalNotes: [
+      'Post-tensioned architectural concrete canopy engineered for 120mph coastal gale loads',
+      'Integrated induction cooktops and custom wood-fired hearth within bronze fluted cabinetry',
+      'Solid 12-foot honed Roman travertine table slab weighing 3,800 lbs',
+    ],
+  },
+  {
+    id: 'cliffside-culinary-pavilion',
+    title: 'Creek Harbour',
+    subtitle: 'Corona del Mar • Oceanfront Atelier',
+    location: 'Corona del Mar, California',
+    category: 'Coastal Sanctuaries',
+    disciplines: 'Cantilevered Concrete Canopy & Outdoor Hearth',
+    year: '2024',
+    description:
+      'A wafer-thin cantilevered concrete roof floats over an outdoor kitchen, sculpted travertine dining table, and ocean-facing fire hearth.',
+    extendedDescription:
+      'Conceived as a sheltered perch for open-air entertaining above the Pacific breakers, the pavilion utilizes post-tensioned ultra-high-performance concrete to achieve a seamless 24-foot cantilever with zero visual support on the seaward edge.',
+    heroImage: "/Creek Harbour.webp",
     specs: {
       acreage: '1.9 Acres',
       elevationDelta: '110 ft sea cliff',
@@ -318,3 +345,71 @@ export const STUDIO_PRINCIPALS = {
     { value: '14', label: 'ASLA Honors' },
   ],
 };
+
+export const SERVICE_GATEWAYS = [
+  {
+    title: 'Interior Design',
+    description: 'HSS7 Landscaping is a Dubai-based interior design company delivering bespoke, luxury interiors for villas, apartments, and offices across the UAE.',
+    icon: 'map',
+    image: '/interior-design.webp',
+  },
+  {
+    title: 'Joinery',
+    description: ' Need premium joinery services in Dubai? HSS7 Landscaping delivers expert bespoke woodwork and custom cabinetry. Book your consultation today!',
+    icon: 'layers',
+    image: '/joinery.webp',
+  },
+  {
+    title: 'Landscaping',
+    description: 'HSS7 Landscaping is a licensed landscaping company in Dubai that manages design, NOC approvals, and construction under one team. Explore our services!',
+    icon: 'potted_plant',
+    image: '/Landscaping.webp',
+  },
+  {
+    title: 'Pool Design',
+    description: 'Professional swimming pool design in Dubai. HSS7 Landscaping provides residential pools, renovations, maintenance, and infinity pools. Contact us!',
+    icon: 'water_drop',
+    image: '/pool.webp',
+  },
+  {
+    title: 'Interior Fit-Out',
+    description: 'Hire the best interior fit-out contractors in Dubai for your commercial and residential projects. Get expert design and a free consultation today!',
+    icon: 'wb_twilight',
+    image: '/interior-fit-out.webp',
+  },
+];
+
+export const JOURNAL_ARTICLES = [
+  {
+    id: 'travertine-terraces',
+    title: 'The Art of Travertine: Sculpting Stone for Coastal Living',
+    excerpt: 'Exploring how cross-cut Roman travertine is sourced, honed, and installed to withstand decades of salt air while retaining barefoot warmth.',
+    date: 'August 2026',
+    category: 'Materials & Craft',
+    image: 'https://images.unsplash.com/photo-1590402494682-cd3fb53b1f70?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'olive-grove-relocation',
+    title: 'Moving Ancient Olives: A 200-Year Journey Across Continents',
+    excerpt: 'Behind the scenes of our most ambitious specimen tree relocation — three 180-year-old Olea europaea from Andalusia to Cap d\'Antibes.',
+    date: 'June 2026',
+    category: 'Botanical Heritage',
+    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'nightscape-design',
+    title: 'Invisible Light: Engineering Dark-Sky Compliant Estate Illumination',
+    excerpt: 'How museum-grade 2700K fixtures concealed within stone and canopy create ethereal nightscapes without compromising star visibility.',
+    date: 'April 2026',
+    category: 'Lighting Design',
+    image: 'https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=800&q=80',
+  },
+  {
+    id: 'infinity-engineering',
+    title: 'Engineering the Edge: How Knife-Edge Pools Defy Gravity',
+    excerpt: 'The hydraulic engineering and precision stonework behind our signature zero-edge infinity reflection basins.',
+    date: 'February 2026',
+    category: 'Water Architecture',
+    image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80',
+  },
+];

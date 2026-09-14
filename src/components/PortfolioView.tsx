@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { PORTFOLIO_PROJECTS } from '../data/content';
-import { ProjectFolio } from '../types';
+import React, { useState } from "react";
+import { PORTFOLIO_PROJECTS } from "../data/content";
+import { ProjectFolio } from "../types";
 
 interface PortfolioViewProps {
   onSelectProject: (project: ProjectFolio) => void;
@@ -11,19 +11,34 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
   onSelectProject,
   onOpenConsultation,
 }) => {
-  const [selectedCategory, setSelectedCategory] = useState<string>('All Folios');
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
 
+  // Sitemap Archive filters: All, Landscape & Pools, Interiors, Fit-Out, Joinery
   const categories = [
-    'All Folios',
-    'Coastal Sanctuaries',
-    'Hillside & Cantilever',
-    'Zen & Mineral',
+    "All",
+    "Landscape & Pools",
+    "Interiors",
+    "Fit-Out",
+    "Joinery",
   ];
 
   const filteredProjects =
-    selectedCategory === 'All Folios'
+    selectedCategory === "All"
       ? PORTFOLIO_PROJECTS
-      : PORTFOLIO_PROJECTS.filter((p) => p.category === selectedCategory);
+      : PORTFOLIO_PROJECTS.filter(
+          (p) =>
+            p.category === selectedCategory ||
+            (selectedCategory === "Landscape & Pools" &&
+              (p.category === "Coastal Sanctuaries" ||
+                p.category === "Hillside & Cantilever" ||
+                p.category === "Zen & Mineral")) ||
+            (selectedCategory === "Interiors" &&
+              p.disciplines.toLowerCase().includes("interior")) ||
+            (selectedCategory === "Fit-Out" &&
+              p.disciplines.toLowerCase().includes("hardscape")) ||
+            (selectedCategory === "Joinery" &&
+              p.disciplines.toLowerCase().includes("stonework"))
+        );
 
   return (
     <div className="w-full bg-[#f9f9f8] pt-28 pb-32">
@@ -34,7 +49,7 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
             <div className="flex items-center gap-3 mb-4">
               <span className="w-6 h-[1px] bg-[#1a1a1a]" />
               <span className="text-[11px] uppercase font-bold tracking-[0.24em] text-[#8c857b]">
-                Monographic Archive
+                Monographic Archive (/projects/)
               </span>
             </div>
             <h1 className="font-serif text-4xl sm:text-6xl text-[#1a1c1c] font-normal tracking-tight">
@@ -46,7 +61,7 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
           </div>
         </div>
 
-        {/* Filter Categories Bar */}
+        {/* Filter Categories Bar (Exact Sitemap Filters: All, Landscape & Pools, Interiors, Fit-Out, Joinery) */}
         <div className="flex flex-wrap items-center gap-2 pb-8 mb-12 border-b border-[#e3e1dc]">
           {categories.map((cat) => (
             <button
@@ -54,8 +69,8 @@ export const PortfolioView: React.FC<PortfolioViewProps> = ({
               onClick={() => setSelectedCategory(cat)}
               className={`px-5 py-2.5 text-xs uppercase tracking-editorial transition-all cursor-pointer ${
                 selectedCategory === cat
-                  ? 'bg-[#1a1a1a] text-white font-semibold'
-                  : 'bg-[#f2f1ee] text-[#444748] hover:bg-[#e3e1dc] hover:text-[#1a1a1a]'
+                  ? "bg-[#1a1a1a] text-white font-semibold"
+                  : "bg-[#f2f1ee] text-[#444748] hover:bg-[#e3e1dc] hover:text-[#1a1a1a]"
               }`}
             >
               {cat}

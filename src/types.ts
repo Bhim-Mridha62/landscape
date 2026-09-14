@@ -1,11 +1,29 @@
-export type NavSection = 'home' | 'services' | 'portfolio' | 'craft' | 'studio' | 'contact';
+export type NavSection =
+  | "home"
+  | "portfolio"
+  | "services"
+  | "process"
+  | "about"
+  | "journal"
+  | "craft"
+  | "studio"
+  | "contact";
 
 export interface ProjectFolio {
   id: string;
   title: string;
   subtitle: string;
   location: string;
-  category: 'Coastal Sanctuaries' | 'Hillside & Cantilever' | 'Zen & Mineral' | 'Historic Restorations';
+  category:
+    | "Landscape & Pools"
+    | "Interiors"
+    | "Fit-Out"
+    | "Joinery"
+    | "Coastal Sanctuaries"
+    | "Hillside & Cantilever"
+    | "Zen & Mineral"
+    | "Historic Restorations"
+    | string;
   disciplines: string;
   year: string;
   description: string;
@@ -31,7 +49,7 @@ export interface MethodologyPhase {
   icon: string;
   deliverables: string[];
   fieldTechnique: string;
-  img:string
+  img: string;
 }
 
 export interface MaterialSpecimen {

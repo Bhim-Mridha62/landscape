@@ -19,10 +19,10 @@ export const TestimonialCarousel: React.FC = () => {
   const current = TESTIMONIALS[currentIndex];
 
   return (
-    <section className="w-full bg-[#f9f9f8] py-24 sm:py-32 border-b border-[#e3e1dc]">
+    <section className="w-full bg-[#f9f9f8] py-10 md:py-20 border-b border-[#e3e1dc]">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16">
         {/* Section Header with Arrow Navigation */}
-        <div className="flex items-center justify-between mb-16 pb-6 border-b border-[#e3e1dc]">
+        <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="w-6 h-[1px] bg-[#1a1a1a]" />
             <span className="text-[11px] uppercase font-bold tracking-[0.24em] text-[#8c857b]">

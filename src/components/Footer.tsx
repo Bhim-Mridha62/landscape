@@ -1,296 +1,245 @@
-import React, { useState } from "react";
-import { BRAND_LOGO_URL } from "../data/content";
-import { NavSection } from "../types";
+import React from "react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Facebook,
+  Linkedin,
+  Instagram,
+  Youtube,
+  Compass,
+} from "lucide-react";
 
 interface FooterProps {
-  onNavigate: (section: NavSection) => void;
-  onOpenConsultation: () => void;
-  onOpenMonograph: () => void;
+  onNavigate: (section: string) => void;
+  onOpenConsultation?: () => void;
+  onOpenMonograph?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({
-  onNavigate,
-  onOpenConsultation,
-  onOpenMonograph,
-}) => {
-  const [email, setEmail] = useState("");
-  const [subscribed, setSubscribed] = useState(false);
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email.trim()) {
-      setSubscribed(true);
-      setTimeout(() => {
-        setEmail("");
-        setSubscribed(false);
-      }, 4000);
-    }
-  };
-
+export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
   return (
-    <footer
-      className="w-full text-[#f9f9f8] pt-20 pb-12 relative"
-      style={{ backgroundImage: "url(/footer.png)", backgroundSize: "cover" }}
-    >
-      <div className="absolute inset-0 bg-black/65" />
-      <div className="max-w-[1440px] mx-auto px-3 sm:px-10 lg:px-16 relative z-10">
-        {/* Main Footer Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 pb-16 border-b border-white/10">
-          {/* Brand & Mission Statement */}
-          <div className="lg:col-span-4 flex flex-col justify-between">
+    <footer className="w-full text-white bg-[#1a231c] pt-20 pb-10 border-t border-white/10">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-10 lg:px-16">
+        {/* Main Footer Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-white/10">
+          {/* Column 1: Logo & About Description */}
+          <div className="lg:col-span-4 flex flex-col justify-between space-y-6">
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <img
-                  src={BRAND_LOGO_URL}
-                  alt="AURA LANDSCAPE"
-                  className="h-8 w-auto invert object-contain"
-                  onError={(e) => {
-                    (e.target as HTMLElement).style.display = "none";
-                  }}
+                  src="/logo.png"
+                  alt="HSS7 Landscaping"
+                  className="h-24 w-auto object-contain"
                 />
-                <span className="font-serif text-2xl tracking-tight text-white uppercase">
-                  Aura Landscape
-                </span>
               </div>
 
-              <p className="text-white/70 text-sm leading-relaxed font-light mb-8 max-w-sm">
-                Transforming the architectural threshold into enduring natural
-                sanctuary through minimalist botanical composition and hardscape
-                curation.
+              <p className="text-white/80 text-sm sm:text-base leading-relaxed font-light">
+                HSS7 Landscaping is a Dubai-based contractor specializing in
+                landscaping, swimming pool design, interior design, custom
+                joinery, and interior fit-out services across Palm Jumeirah,
+                Dubai Hills Estate, Arabian Ranches, and other prime UAE
+                communities.
               </p>
             </div>
 
-            <div>
-              <div className="text-[10px] uppercase tracking-widest text-white/50 mb-3 font-mono">
-                Folio Archives
-              </div>
-              <div className="flex items-center gap-4 text-xs tracking-editorial uppercase text-white/80">
-                <a
-                  href="#instagram"
-                  onClick={(e) => e.preventDefault()}
-                  className="hover:text-white transition-colors"
-                >
-                  Instagram
-                </a>
-                <span>•</span>
-                <a
-                  href="#pinterest"
-                  onClick={(e) => e.preventDefault()}
-                  className="hover:text-white transition-colors"
-                >
-                  Pinterest
-                </a>
-                <span>•</span>
-                <a
-                  href="#adpro"
-                  onClick={(e) => e.preventDefault()}
-                  className="hover:text-white transition-colors"
-                >
-                  AD Pro
-                </a>
-                <span>•</span>
-                <a
-                  href="#linkedin"
-                  onClick={(e) => e.preventDefault()}
-                  className="hover:text-white transition-colors"
-                >
-                  LinkedIn
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Disciplines Column */}
-          <div className="lg:col-span-2">
-            <h4 className="text-[11px] uppercase tracking-editorial text-white/50 font-semibold mb-6">
-              Disciplines
-            </h4>
-            <ul className="space-y-3 text-xs tracking-wide text-white/80 font-light">
-              <li>
-                <button
-                  onClick={() => onNavigate("services")}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
-                >
-                  Master Planning
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate("services")}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
-                >
-                  Coastal Estates
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate("services")}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
-                >
-                  Hardscape Architecture
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate("craft")}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
-                >
-                  Horticultural Curations
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate("services")}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
-                >
-                  Terrace Sculpting
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Practice & Firm Column */}
-          <div className="lg:col-span-2">
-            <h4 className="text-[11px] uppercase tracking-editorial text-white/50 font-semibold mb-6">
-              The Firm
-            </h4>
-            <ul className="space-y-3 text-xs tracking-wide text-white/80 font-light">
-              <li>
-                <button
-                  onClick={() => onNavigate("portfolio")}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
-                >
-                  Selected Works
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate("studio")}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
-                >
-                  Practice &amp; Ethics
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate("craft")}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
-                >
-                  Craft &amp; Materials
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate("studio")}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
-                >
-                  Studio &amp; Principals
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={onOpenMonograph}
-                  className="hover:text-white transition-colors text-left cursor-pointer"
-                >
-                  Press &amp; Monograph
-                </button>
-              </li>
-            </ul>
-          </div>
-
-          {/* Newsletter Subscription */}
-          <div className="lg:col-span-4">
-            <h4 className="text-[11px] uppercase tracking-editorial text-white/50 font-semibold mb-4">
-              Stay Inspired
-            </h4>
-            <p className="text-xs text-white/70 font-light leading-relaxed mb-6">
-              Receive our seasonal monographic prints, technical research
-              papers, and architectural study releases.
-            </p>
-
-            <form onSubmit={handleSubscribe} className="space-y-3">
-              <div className="flex border border-white/30 focus-within:border-white">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter email address"
-                  required
-                  className="bg-transparent px-4 py-3 text-xs text-white placeholder-white/40 focus:outline-none flex-1 font-light"
-                />
-                <button
-                  type="submit"
-                  className="bg-white text-[#1a1a1a] px-6 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-[#e3e1dc] transition-colors cursor-pointer"
-                >
-                  Sign Up
-                </button>
-              </div>
-              {subscribed && (
-                <div className="text-[11px] text-[#8c857b] font-mono">
-                  Thank you. A seasonal monograph invitation has been
-                  dispatched.
-                </div>
-              )}
-            </form>
-
-            <div className="mt-6 pt-4 border-t border-white/10">
-              <button
-                onClick={onOpenConsultation}
-                className="text-[10px] uppercase font-mono tracking-widest text-white/70 hover:text-white flex items-center gap-2 cursor-pointer"
+            {/* Social Media Icons */}
+            <div className="flex items-center gap-4 text-white/90">
+              <a
+                href="#facebook"
+                onClick={(e) => e.preventDefault()}
+                className="hover:text-white transition-colors p-1"
               >
-                <span>Private Commission Inquiries</span>
-                <span className="material-symbols-outlined text-xs">
-                  arrow_forward
-                </span>
-              </button>
+                <Facebook size={22} />
+              </a>
+              <a
+                href="#linkedin"
+                onClick={(e) => e.preventDefault()}
+                className="hover:text-white transition-colors p-1"
+              >
+                <Linkedin size={22} />
+              </a>
+              <a
+                href="#instagram"
+                onClick={(e) => e.preventDefault()}
+                className="hover:text-white transition-colors p-1"
+              >
+                <Instagram size={22} />
+              </a>
+              <a
+                href="#youtube"
+                onClick={(e) => e.preventDefault()}
+                className="hover:text-white transition-colors p-1"
+              >
+                <Youtube size={22} />
+              </a>
+              <a
+                href="#pinterest"
+                onClick={(e) => e.preventDefault()}
+                className="hover:text-white transition-colors p-1"
+              >
+                <Compass size={22} />
+              </a>
+            </div>
+          </div>
+
+          {/* Column 2: Links */}
+          <div className="lg:col-span-2">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-6">
+              Links
+            </h4>
+            <ul className="space-y-3.5 text-sm tracking-wide text-white/80 font-light">
+              <li>
+                <button
+                  onClick={() => onNavigate("terms")}
+                  className="hover:text-white transition-colors text-left cursor-pointer"
+                >
+                  Terms of Service
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("privacy")}
+                  className="hover:text-white transition-colors text-left cursor-pointer"
+                >
+                  Privacy Policy
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("contact")}
+                  className="hover:text-white transition-colors text-left cursor-pointer"
+                >
+                  Contact Us
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("about")}
+                  className="hover:text-white transition-colors text-left cursor-pointer"
+                >
+                  About
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("blog")}
+                  className="hover:text-white transition-colors text-left cursor-pointer"
+                >
+                  Blog
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 3: Services */}
+          <div className="lg:col-span-3">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-6">
+              Services
+            </h4>
+            <ul className="space-y-3.5 text-sm tracking-wide text-white/80 font-light">
+              <li>
+                <button
+                  onClick={() => onNavigate("services")}
+                  className="hover:text-white transition-colors text-left cursor-pointer"
+                >
+                  Landscaping Services
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("services")}
+                  className="hover:text-white transition-colors text-left cursor-pointer"
+                >
+                  Interior Design Services
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("services")}
+                  className="hover:text-white transition-colors text-left cursor-pointer"
+                >
+                  Pool Design Services
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("services")}
+                  className="hover:text-white transition-colors text-left cursor-pointer"
+                >
+                  Joinery Services
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onNavigate("services")}
+                  className="hover:text-white transition-colors text-left cursor-pointer"
+                >
+                  Interior Fit-out
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Column 4: Contact Us */}
+          <div className="lg:col-span-3 space-y-6">
+            <h4 className="text-sm font-semibold uppercase tracking-wider text-white mb-6">
+              Contact Us
+            </h4>
+
+            {/* Office Address */}
+            <div className="flex items-start gap-3.5 text-sm text-white/80 font-light">
+              <MapPin size={20} className="text-white shrink-0 mt-1" />
+              <div>
+                <strong className="text-white font-medium block mb-1">
+                  Office Address
+                </strong>
+                Ras Al Khor Industrial Area 1, Omar Ahmed
+                <br />
+                Al Tayer Warehouse No. 9, Dubai, UAE
+              </div>
+            </div>
+
+            {/* Call for Inquiry */}
+            <div className="flex items-start gap-3.5 text-sm text-white/80 font-light">
+              <Phone size={20} className="text-white shrink-0 mt-1" />
+              <div>
+                <strong className="text-white font-medium block mb-1">
+                  Call for Inquiry
+                </strong>
+                <a href="tel:+971525259513" className="hover:text-white block">
+                  +971 52 525 9513
+                </a>
+                <a href="tel:+971043530877" className="hover:text-white block">
+                  +971 043530877
+                </a>
+              </div>
+            </div>
+
+            {/* Email Us */}
+            <div className="flex items-start gap-3.5 text-sm text-white/80 font-light">
+              <Mail size={20} className="text-white shrink-0 mt-1" />
+              <div>
+                <strong className="text-white font-medium block mb-1">
+                  Email Us
+                </strong>
+                <a
+                  href="mailto:info@hss7architects.ae"
+                  className="hover:text-white"
+                >
+                  info@hss7architects.ae
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Studio Locations Grid */}
-        <div className="py-12 border-b border-white/10 grid grid-cols-1 md:grid-cols-2 gap-8 text-xs font-light">
-          <div>
-            <div className="text-[10px] uppercase tracking-widest text-white/50 font-mono mb-2">
-              East Hampton Studio
-            </div>
-            <p className="text-white/90">
-              840 Montauk Highway, East Hampton, NY 11937
-            </p>
-            <p className="text-white/60 text-[11px] mt-1">
-              Consultation by Appointment • +1 (631) 283-9100
-            </p>
-          </div>
-          <div>
-            <div className="text-[10px] uppercase tracking-widest text-white/50 font-mono mb-2">
-              Bel Air Atelier
-            </div>
-            <p className="text-white/90">
-              714 Bel Air Road, Los Angeles, CA 90077
-            </p>
-            <p className="text-white/60 text-[11px] mt-1">
-              Design Studio &amp; Plant Archive • +1 (310) 472-8820
-            </p>
-          </div>
-        </div>
-
-        {/* Bottom Legal & Copyright Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[10px] uppercase tracking-editorial text-white/50 font-mono">
-          <div>© AURA LANDSCAPE 2026. All rights reserved.</div>
-          <div className="flex items-center gap-6">
-            <span className="hover:text-white cursor-pointer">
-              Privacy Policy
-            </span>
-            <span>•</span>
-            <span className="hover:text-white cursor-pointer">
-              Terms of Practice
-            </span>
-            <span>•</span>
-            <span className="hover:text-white cursor-pointer">
-              Studio Credentials
-            </span>
-          </div>
+        {/* Bottom Copyright Bar */}
+        <div className="pt-8 text-center text-sm text-white/60 tracking-wider">
+          © 2015 – 2026 HSS7 Landscaping Works L.L.C. All rights reserved.
         </div>
       </div>
     </footer>
   );
 };
+
+export default Footer;
