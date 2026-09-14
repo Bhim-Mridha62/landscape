@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
-import { METHODOLOGY_PHASES } from '../data/content';
-import { MethodologyPhase } from '../types';
+import React, { useState } from "react";
+import { METHODOLOGY_PHASES } from "../data/content";
+import { MethodologyPhase } from "../types";
 
 interface MethodologyProps {
   onSelectPhase?: (phase: MethodologyPhase) => void;
 }
 
 export const Methodology: React.FC<MethodologyProps> = () => {
-  const [activeModalPhase, setActiveModalPhase] = useState<MethodologyPhase | null>(null);
+  const [activeModalPhase, setActiveModalPhase] =
+    useState<MethodologyPhase | null>(null);
 
   return (
-    <section id="methodology" className="w-full bg-[#f9f9f8] py-24 sm:py-32 border-b border-[#e3e1dc]">
+    <section
+      id="methodology"
+      className="w-full bg-[#f9f9f8] py-24 sm:py-32 border-b border-[#e3e1dc]"
+    >
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
         {/* Section Header */}
         <div className="max-w-2xl mb-16 sm:mb-20">
@@ -25,8 +29,9 @@ export const Methodology: React.FC<MethodologyProps> = () => {
             with Nature
           </h2>
           <p className="text-[#444748] text-base sm:text-lg font-light leading-relaxed">
-            Every site carries a prehistoric dialogue between light, soil, and bedrock. We calibrate
-            modern residential massing against geological permanence.
+            Every site carries a prehistoric dialogue between light, soil, and
+            bedrock. We calibrate modern residential massing against geological
+            permanence.
           </p>
         </div>
 
@@ -35,35 +40,50 @@ export const Methodology: React.FC<MethodologyProps> = () => {
           {METHODOLOGY_PHASES.map((phase) => (
             <div
               key={phase.phase}
-              className="bg-[#f2f1ee] border border-[#e3e1dc] p-8 flex flex-col justify-between hover:border-[#1a1a1a] transition-all duration-300 group"
+              onClick={() => setActiveModalPhase(phase)}
+              className="relative w-full h-[420px] rounded-2xl overflow-hidden cursor-pointer border border-white/10 transition-all duration-500 group shadow-sm hover:shadow-2xl flex flex-col justify-between p-5 sm:p-6"
             >
-              <div>
-                <div className="flex items-center justify-between mb-8">
-                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#8c857b] font-mono">
-                    {phase.phase}
-                  </span>
-                  <div className="w-10 h-10 bg-[#f9f9f8] border border-[#e3e1dc] flex items-center justify-center text-[#1a1a1a] group-hover:bg-[#1a1a1a] group-hover:text-white transition-colors">
-                    <span className="material-symbols-outlined text-[20px]">{phase.icon}</span>
-                  </div>
-                </div>
+              {/* Permanent Full Background Image with Dark Overlay */}
+              <div className="absolute inset-0 z-0 overflow-hidden">
+                <img
+                  src={phase.img}
+                  alt={phase.title}
+                  className="w-full h-full object-cover object-center scale-100 group-hover:scale-110 transition-transform duration-1000 ease-out"
+                />
+                {/* Permanent Dark Gradient Overlay for Readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/40" />
+              </div>
 
-                <h3 className="font-serif text-xl text-[#1a1c1c] font-normal leading-snug mb-4 group-hover:text-[#5a5d4d] transition-colors">
+              {/* Top Content: Phase Number & Icon */}
+              <div className="relative z-10 flex items-center justify-between">
+                <span className="text-[10px] uppercase tracking-[0.2em] text-white/70 font-mono">
+                  {phase.phase}
+                </span>
+                <div className="w-9 h-9 bg-white/10 border border-white/20 flex items-center justify-center text-white rounded-lg backdrop-blur-sm">
+                  <span className="material-symbols-outlined text-[18px]">
+                    {phase.icon}
+                  </span>
+                </div>
+              </div>
+
+              {/* Bottom Content (No Blur, Direct Clean Text over Dark Image) */}
+              <div className="relative z-10 bg-transparent p-1 transition-all duration-300">
+                <h3 className="font-serif text-lg sm:text-xl text-white font-normal leading-snug mb-2">
                   {phase.title}
                 </h3>
 
-                <p className="text-[#444748] text-sm leading-relaxed font-light mb-8">
+                <p className="text-stone-300 text-xs sm:text-sm leading-relaxed font-light mb-4 line-clamp-3">
                   {phase.description}
                 </p>
-              </div>
 
-              <div className="pt-6 border-t border-[#e3e1dc]/80">
-                <button
-                  onClick={() => setActiveModalPhase(phase)}
-                  className="w-full flex items-center justify-between text-[11px] uppercase tracking-editorial font-semibold text-[#1a1a1a] group-hover:translate-x-1 transition-transform cursor-pointer"
-                >
-                  <span>{phase.linkText}</span>
-                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                </button>
+                <div className="pt-3 border-t border-white/20">
+                  <button className="w-full flex items-center justify-between text-[11px] uppercase tracking-editorial font-semibold text-white group-hover:translate-x-1 transition-all cursor-pointer">
+                    <span>{phase.linkText}</span>
+                    <span className="material-symbols-outlined text-sm">
+                      arrow_forward
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
           ))}
@@ -87,7 +107,9 @@ export const Methodology: React.FC<MethodologyProps> = () => {
                 onClick={() => setActiveModalPhase(null)}
                 className="w-8 h-8 border border-[#e3e1dc] flex items-center justify-center text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white transition-colors cursor-pointer"
               >
-                <span className="material-symbols-outlined text-base">close</span>
+                <span className="material-symbols-outlined text-base">
+                  close
+                </span>
               </button>
             </div>
 

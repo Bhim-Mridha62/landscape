@@ -31,6 +31,7 @@ export interface MethodologyPhase {
   icon: string;
   deliverables: string[];
   fieldTechnique: string;
+  img:string
 }
 
 export interface MaterialSpecimen {

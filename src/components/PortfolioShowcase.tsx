@@ -38,7 +38,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
         </div>
 
         {/* Full-Screen Background Image Project Displays */}
-        <div className="space-y-16 sm:space-y-24">
+        <div className="space-y-5 sm:space-y-10">
           {featuredProjects.map((project, idx) => {
             // Even content on right (idx % 2 === 1), Odd content on left (idx % 2 === 0)
             const isContentRight = idx % 2 === 1;
@@ -72,11 +72,11 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
 
                 {/* Floating Content Box (Left or Right Aligned) */}
                 <div
-                  className={`absolute inset-0 flex items-end p-6 sm:p-12 lg:p-16 z-10 ${
+                  className={`absolute inset-0 flex items-end p-4 sm:p-10 lg:p-12 z-10 ${
                     isContentRight ? "justify-end" : "justify-start"
                   }`}
                 >
-                  <div className="max-w-xl w-full p-8 sm:p-10 text-white">
+                  <div className="max-w-xl w-full p-2 md:p-10 text-white">
                     <div className="text-[10px] uppercase tracking-editorial text-white/70 font-medium mb-2">
                       {project.disciplines}
                     </div>
@@ -116,7 +116,7 @@ export const PortfolioShowcase: React.FC<PortfolioShowcaseProps> = ({
           </p>
           <button
             onClick={onViewAllWorks}
-            className="border border-[#1a1a1a] px-8 py-4 text-xs font-semibold tracking-architectural uppercase text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white transition-all cursor-pointer"
+            className="border border-[#1a1a1a] px-4 md:px-8 py-2 md:py-4 text-xs font-semibold tracking-architectural uppercase text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white transition-all cursor-pointer"
           >
             Explore Complete Portfolio Archive →
           </button>

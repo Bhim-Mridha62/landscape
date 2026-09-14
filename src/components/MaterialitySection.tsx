@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { MATERIAL_SPECIMENS } from '../data/content';
-import { MaterialSpecimen } from '../types';
+import React, { useState } from "react";
+import { MATERIAL_SPECIMENS } from "../data/content";
+import { MaterialSpecimen } from "../types";
 
 interface MaterialitySectionProps {
   onOpenMaterialIndex: () => void;
@@ -9,14 +9,18 @@ interface MaterialitySectionProps {
 export const MaterialitySection: React.FC<MaterialitySectionProps> = ({
   onOpenMaterialIndex,
 }) => {
-  const [selectedSpecimen, setSelectedSpecimen] = useState<MaterialSpecimen | null>(null);
+  const [selectedSpecimen, setSelectedSpecimen] =
+    useState<MaterialSpecimen | null>(null);
 
   const specimen1 = MATERIAL_SPECIMENS[0];
   const specimen2 = MATERIAL_SPECIMENS[1];
   const specimen3 = MATERIAL_SPECIMENS[2];
 
   return (
-    <section id="craft" className="w-full bg-[#f2f1ee] py-24 sm:py-32 border-b border-[#e3e1dc]">
+    <section
+      id="craft"
+      className="w-full bg-[#f2f1ee] py-24 sm:py-32 border-b border-[#e3e1dc]"
+    >
       <div className="max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
         {/* Section Header */}
         <div className="max-w-2xl mb-16 sm:mb-20">
@@ -31,8 +35,9 @@ export const MaterialitySection: React.FC<MaterialitySectionProps> = ({
             Living Form
           </h2>
           <p className="text-[#444748] text-base sm:text-lg font-light leading-relaxed">
-            Every project harmonizes geologic permanence with botanical heritage. Sourced directly
-            from premier quarries and private arboreal collections.
+            Every project harmonizes geologic permanence with botanical
+            heritage. Sourced directly from premier quarries and private
+            arboreal collections.
           </p>
         </div>
 
@@ -55,7 +60,7 @@ export const MaterialitySection: React.FC<MaterialitySectionProps> = ({
               </div>
             </div>
 
-            <div className="p-8 sm:p-10 flex flex-col justify-between flex-1">
+            <div className="p-2 md:p-10 flex flex-col justify-between flex-1">
               <div>
                 <div className="flex items-center justify-between text-[10px] uppercase font-mono tracking-widest text-[#8c857b] mb-3">
                   <span>{specimen1.specimenNumber}</span>
@@ -116,7 +121,7 @@ export const MaterialitySection: React.FC<MaterialitySectionProps> = ({
             </div>
 
             {/* Bottom Card: Travertine & Bronze Study */}
-            <div className="bg-[#f9f9f8] border border-[#e3e1dc] p-6 sm:p-8 flex flex-col justify-between flex-1 hover:border-[#1a1a1a] transition-all duration-300">
+            <div className="bg-[#f9f9f8] border border-[#e3e1dc] p-3 sm:p-8 flex flex-col justify-between flex-1 hover:border-[#1a1a1a] transition-all duration-300">
               <div>
                 <div className="flex items-center justify-between text-[9px] uppercase font-mono tracking-widest text-[#8c857b] mb-2">
                   <span>{specimen3.specimenNumber}</span>
@@ -137,13 +142,17 @@ export const MaterialitySection: React.FC<MaterialitySectionProps> = ({
                     <span className="text-[#8c857b] block uppercase tracking-wider text-[9px]">
                       Mineral Class
                     </span>
-                    <span className="text-[#1a1c1c] font-semibold">{specimen3.mineralClass}</span>
+                    <span className="text-[#1a1c1c] font-semibold">
+                      {specimen3.mineralClass}
+                    </span>
                   </div>
                   <div>
                     <span className="text-[#8c857b] block uppercase tracking-wider text-[9px]">
                       Alloy Spec
                     </span>
-                    <span className="text-[#1a1c1c] font-semibold">{specimen3.alloySpec}</span>
+                    <span className="text-[#1a1c1c] font-semibold">
+                      {specimen3.alloySpec}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -154,7 +163,9 @@ export const MaterialitySection: React.FC<MaterialitySectionProps> = ({
                   className="w-full flex items-center justify-between text-xs uppercase tracking-editorial font-bold text-[#1a1a1a] hover:text-[#5a5d4d] transition-colors cursor-pointer"
                 >
                   <span>Specimen &amp; Material Index</span>
-                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                  <span className="material-symbols-outlined text-sm">
+                    arrow_forward
+                  </span>
                 </button>
               </div>
             </div>
@@ -179,7 +190,9 @@ export const MaterialitySection: React.FC<MaterialitySectionProps> = ({
                 onClick={() => setSelectedSpecimen(null)}
                 className="w-8 h-8 border border-[#e3e1dc] flex items-center justify-center text-[#1a1a1a] hover:bg-[#1a1a1a] hover:text-white transition-colors cursor-pointer"
               >
-                <span className="material-symbols-outlined text-base">close</span>
+                <span className="material-symbols-outlined text-base">
+                  close
+                </span>
               </button>
             </div>
 
@@ -196,10 +209,18 @@ export const MaterialitySection: React.FC<MaterialitySectionProps> = ({
             </p>
 
             <div className="bg-[#f2f1ee] p-4 border border-[#e3e1dc] text-xs font-mono mb-6 space-y-1">
-              <div><strong>Provenance:</strong> {selectedSpecimen.origin}</div>
-              <div><strong>Scientific Classification:</strong> {selectedSpecimen.mineralClass}</div>
+              <div>
+                <strong>Provenance:</strong> {selectedSpecimen.origin}
+              </div>
+              <div>
+                <strong>Scientific Classification:</strong>{" "}
+                {selectedSpecimen.mineralClass}
+              </div>
               {selectedSpecimen.thermalAcousticRating && (
-                <div><strong>Engineering Specs:</strong> {selectedSpecimen.thermalAcousticRating}</div>
+                <div>
+                  <strong>Engineering Specs:</strong>{" "}
+                  {selectedSpecimen.thermalAcousticRating}
+                </div>
               )}
             </div>
 

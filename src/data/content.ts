@@ -39,6 +39,7 @@ export const METHODOLOGY_PHASES: MethodologyPhase[] = [
       'In-depth terrain analysis, sunlight orientation matrices, indigenous soil horizons, and deep architectural alignment with primary living axes.',
     linkText: 'Topography Folio',
     icon: 'explore',
+    img:"https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
     deliverables: [
       '3D LiDAR Point-Cloud Topography Model',
       'Solar Radiation & Microclimate Heat Map',
@@ -55,6 +56,7 @@ export const METHODOLOGY_PHASES: MethodologyPhase[] = [
       'Sculpting natural limestone terraces, knife-edge infinity reflection pools, cantilevered pavilions, and flush sunken fire pit amphitheaters.',
     linkText: 'Structural Stonework',
     icon: 'water_drop',
+    img:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1600&q=80",
     deliverables: [
       'Cross-cut Roman Travertine Joinery Schedules',
       'Knife-Edge Infinity Weir Precision Engineering',
@@ -71,6 +73,7 @@ export const METHODOLOGY_PHASES: MethodologyPhase[] = [
       'Ethical sourcing of century-old olive groves, sculptural Japanese black pines, microclimatic moss gardens, and biodynamic coastal plantings.',
     linkText: 'Arboreal Registry',
     icon: 'potted_plant',
+    img:"https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80",
     deliverables: [
       'Certified Century-Old Specimen Tree Registry',
       'Native & Microclimate Resilient Botanical Matrix',
@@ -87,6 +90,7 @@ export const METHODOLOGY_PHASES: MethodologyPhase[] = [
       'Concealed architectural illumination choreography, subterranean water conservation systems, and perpetual horticultural estate stewardship.',
     linkText: 'Perpetual Care',
     icon: 'wb_twilight',
+    img:"https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=1600&q=80",
     deliverables: [
       '2700K Museum-Grade Architectural Nightscape Choreography',
       'Sub-surface Closed-Loop Water Re-circulation Grid',
